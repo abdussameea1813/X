@@ -66,25 +66,25 @@ export const commentOnPost = async (req, res) => {
         const postId = req.params.id;
         const userid = req.user._id;
 
-        if(!text) {
+        if (!text) {
             return res.status(400).json({ error: "Text field is required" });
         }
 
         const post = await Post.findById(postId);
-
-        if(!post) {
+        if (!post) {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        const comment = {user: userid, text}
+        const comment = { user: userid, text };
 
-        post.comments.push(post);
+        post.comments.push(comment);
         await post.save();
 
-        res.status(200).json(post)
+        res.status(200).json(post.comments);
+        
     } catch (error) {
         console.log("Error in commentOnPost controller: ", error);
-        res.status(500).json({error: "Internal server error"});
+        res.status(500).json({ error: "Internal server error" });
     }
 };
 
@@ -105,7 +105,9 @@ export const likeUnlikePost = async (req, res) => {
             // unlike post
             await Post.updateOne({_id: postId}, {$pull: {likes: userId}});
             await User.updateOne({_id: userId }, {$pull: {likedPosts: postId}});
-            res.status(200).json({message: "Post unliked successfully"});
+            
+           const updatedLikes = post.likes.filter((id) => id.toString() !== userId.toString());
+           res.status(200).json(updatedLikes);
         } else {
             // Like post
             post.likes.push(userId);
@@ -119,7 +121,7 @@ export const likeUnlikePost = async (req, res) => {
            }); 
            await notification.save();
 
-           res.status(200).json({message: "Post liked successfully"});
+           res.status(200).json(post.likes);
         }
     } catch (error) {
         console.log("Error in likeUnlikePost controller: ", error.message)

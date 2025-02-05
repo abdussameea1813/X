@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom"
+import { Route, Routes, Navigate, useParams } from "react-router-dom"
 
 import HomePage from "./pages/home/HomePage"
 import LoginPage from "./pages/auth/login/LoginPage"
@@ -48,7 +48,7 @@ function App() {
         <Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to="/" />}></Route>
         <Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to="/" />}></Route>
         <Route path="/notifications" element={authUser ? < NotificationPage /> : <Navigate to="/login" />} />
-        <Route path="/profile/:username" element={< ProfilePage />} />
+        <Route path="/profile/:userName" element={authUser ? <ProfilePage /> : <Navigate to ="/login" />} />
       </Routes>
       {authUser && <RightPanel />}
       <Toaster />
