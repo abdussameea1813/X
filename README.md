@@ -1,6 +1,5 @@
 # 🐦 X Clone: A Modern Social Networking Platform
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/abdussameea1813/X/graphs/commit-activity)
 [![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/)
@@ -128,9 +127,6 @@ This project has the potential for further development. Here are some ideas for 
 * **Notifications:** Implement a notification system for likes, comments, and follows.
 * **Direct Messaging:** Allow users to send private messages to each other.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgements
 
